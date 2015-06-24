@@ -19,16 +19,13 @@ else:
     ]
 
 setup(
-    name='django-fias',
+    name='ailove-django-fias',
     version=__version__,
     author='Artem Vlasov',
     author_email='root@proscript.ru',
-    url='https://github.com/Yuego/django-fias',
-    download_url='https://github.com/Yuego/django-fias/archive/{0}.tar.gz'.format(__version__),
-
-    description='FIAS Django integration',
+    url='https://github.com/ailove-dev/django-fias',
+    description='FIAS Django integration (fork Ailove)',
     long_description=open('README.rst').read(),
-
     license='MIT license',
     install_requires=[
         'Django>=1.4',
