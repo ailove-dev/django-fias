@@ -6,7 +6,7 @@ from django.utils.text import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from fias.models.addrobj import AddrObj
-from fias.fields import AddressField, ChainedAreaField
+# from fias.fields import AddressField, ChainedAreaField
 
 __all__ = ['FIASAddress', 'FIASAddressWithArea',
            'FIASHouse',
@@ -18,7 +18,7 @@ class FIASAddress(models.Model):
     class Meta:
         abstract = True
 
-    address = AddressField(verbose_name=_('address'), related_name='+')
+    address = models.ForeignKey(AddrObj, verbose_name=_('address'), related_name='+')
 
     full_address = models.CharField(_('full address'), max_length=255, blank=True, editable=False)
     short_address = models.CharField(_('street address'), max_length=255, blank=True, editable=False)
@@ -64,7 +64,7 @@ class FIASAddressWithArea(FIASAddress):
     class Meta:
         abstract = True
 
-    area = ChainedAreaField(AddrObj, address_field='address', related_name='+')
+    area = models.ForeignKey(AddrObj, related_name='+')
 
 
 class FIASHouse(models.Model):
